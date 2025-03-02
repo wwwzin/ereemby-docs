@@ -1,0 +1,10 @@
+{    
+    "title": "Rest Api",
+    "root": false,
+    "icon":"Server",
+    "defaultOpen": false,
+    "pages": [ 
+        "webhook",
+        "auth"
+    ]
+}

@@ -1,0 +1,9 @@
+{    
+    "title": "Webhocks",
+    "root": false,
+    "icon":"Share2",
+    "defaultOpen": false,
+    "pages": [
+        "rest"
+    ]
+}

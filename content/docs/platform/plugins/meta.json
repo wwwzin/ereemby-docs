@@ -1,0 +1,9 @@
+{
+    "title": "Plugins",
+    "root": false,
+    "defaultOpen": false,
+    "icon":"Route",
+    "pages":[
+        "crisp"
+    ]
+}

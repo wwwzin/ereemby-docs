@@ -1,0 +1,9 @@
+{
+    "title": "Beta",
+    "root": false,
+    "defaultOpen": false,
+    "icon":"Tag",
+    "pages": [
+        "personalization"
+    ]
+}

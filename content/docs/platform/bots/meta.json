@@ -1,0 +1,10 @@
+{
+    "title": "Bots",
+    "root": false,
+    "defaultOpen": false,
+    "icon":"Bot",
+    "pages": [
+        "choose",
+        "setting"
+    ]
+}

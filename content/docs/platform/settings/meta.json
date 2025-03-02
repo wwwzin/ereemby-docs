@@ -1,0 +1,12 @@
+{
+    "title": "Configuracoes",
+    "icon": "Settings2",
+    "defaultOpen": false,
+    "root": false,
+    "pages": [
+        "payments",
+        "webhock",
+        "icon",
+        "banner"
+    ]
+}

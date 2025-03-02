@@ -1,0 +1,90 @@
+---
+title: Personalização
+icon: Brush
+description: Começando a personalizar seu site no Ereemby
+---
+
+## Personalização da sua Loja
+
+Para personalizar o design do seu site no Ereemby, siga os passos abaixo:
+
+<Steps>
+
+<Step number={1} title="Acesse o Painel de Customização">
+Acesse o painel de customização em: [https://ereemby.com/dashboard/customization](https://ereemby.com/dashboard/customization).
+</Step>
+
+<Step number={2} title="Personalize o Layout">
+No painel, você verá um campo onde pode colar e modificar o JSON para personalização do seu site. Aqui está um exemplo básico de JSON de configuração:
+
+```json
+{
+  "status": true,
+  "colors": {
+    "color": {
+      "background_color": "#000",
+      "container": "#0a0a0a",
+      "primary": "#000000",
+      "secondary": "#080808",
+      "warnings": "#ffd152",
+      "header": "#000",
+      "green": "#21c985",
+      "yellow": "#ffba09",
+      "red": "#ff493f"
+    },
+    "gradient": {
+      "container_gradient": "linear-gradient(180deg, #33333305, #33333325 65.62%)"
+    },
+    "text": {
+      "h1": "#ffffff",
+      "p": "#8A8A8A"
+    },
+    "border": {
+      "border": "#1c1c1c",
+      "focus": "#fcb64c"
+    },
+    "shadow": {
+      "bottom": "0 2px 3px transparent"
+    },
+    "buttons": {
+      "primary": "#ffffff",
+      "interaction": {
+        "icon": "#fff",
+        "text": "#fff",
+        "play": "#25D366"
+      }
+    }
+  },
+  "header": [
+    {
+      "warning": {
+        "title": "Importante!",
+        "link": "https://discord.gg/ereemby",
+        "color": {
+          "text": "#ffffff",
+          "background": "#000000"
+        }
+      }
+    }
+  ]
+}
+```
+
+</Step> 
+<Step number={3} title="Modifique as Cores e Estilos">
+
+ Você pode alterar as cores e temas conforme desejar. Por exemplo, se quiser mudar o tema para tons de azul, pode ajustar o valor das cores assim:
+   
+```json
+"primary": "#0000FF",
+"secondary": "#1E90FF",
+"header": "#4682B4"
+```
+  </Step> 
+  
+  </Steps>
+
+  💡 Dica: Se quiser criar temas de cores específicas, pode usar ferramentas como o ChatGPT para gerar novas paletas de cores! Por exemplo, você pode pedir: "Quero este JSON com tema azul", ou "Quero este JSON com uma paleta de cores pastel".
+
+  
+---

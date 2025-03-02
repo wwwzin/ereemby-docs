@@ -14,6 +14,7 @@ import * as ri from "react-icons/ri";
 import * as si from "react-icons/si";
 import * as tb from "react-icons/tb";
 import * as ti from "react-icons/ti";
+import * as lucide from "lucide-react";  
 
 const icons: Record<string, IconType> = {};
 const defaults = {
@@ -25,10 +26,12 @@ const defaults = {
     star: fa.FaStar,
     bulb: md.MdLightbulb   
 }
+
 Object.assign(
     icons, defaults, ti, bs, 
     fa, hi, hi2, ri, io, io5, md, tb, bi, 
     si, pi, cg, gr,
+    lucide 
 );
 
 export default icons;

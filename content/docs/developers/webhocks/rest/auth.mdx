@@ -1,0 +1,91 @@
+---
+title: Autenticacao
+icon: Network 
+description: Página inicial da documentação
+---
+
+Para começarmos a trabalhar com Webhooks REST e configurar um novo webhook na Ereemby, siga estes passos:
+
+Os webhooks são um meio essencial de comunicação entre a Ereemby e o seu sistema. Para garantir que apenas mensagens legítimas sejam processadas, utilizamos um método de autenticação baseado em HMAC (Hash-based Message Authentication Code).
+
+<Steps>
+  <Step title="Geração do Token de Assinatura">
+    Ereemby gera um token de assinatura baseado no conteúdo do corpo da requisição (body) e em um segredo compartilhado (secure token) atribuído a cada webhook no momento da sua criação.
+
+    <ImageZoom 
+      src="/docs/rest/auth.png" 
+      alt="Autenticação" 
+      width={600} 
+      height={600} 
+    />
+  </Step>
+
+  <Step title="Token Gerado">
+    Esse token é um hash criptográfico HMAC-SHA256, que é enviado no cabeçalho da requisição:
+
+    ```js
+    x-webhook-signature: <token-gerado>
+    ```
+  </Step>
+
+  <Step title="Verificação da Autenticidade">
+    Ao receber o webhook, seu servidor precisa validar se a requisição veio realmente da Ereemby. Isso é feito recriando o token HMAC localmente e comparando-o com o token recebido no cabeçalho. O código abaixo faz essa verificação:
+
+    ```js
+    const crypto = require('crypto');
+
+    // Função para validar a assinatura do webhook
+    function verifyToken(body, secret, receivedToken) {
+        // Converte o corpo da requisição para JSON
+        const payload = JSON.stringify(body);
+
+        // Gera um token HMAC-SHA256 usando o secret
+        const expectedToken = crypto
+            .createHmac('sha256', secret)
+            .update(payload)
+            .digest('hex');
+
+        // Compara o token gerado com o recebido na requisição
+        return expectedToken === receivedToken;
+    }
+    ```
+  </Step>
+
+  <Step title="Aceitar ou Rejeitar o Webhook">
+    No seu endpoint do webhook, a lógica de validação é aplicada para decidir se o webhook será processado:
+
+    ```js
+    app.post('/webhook', (req, res) => {
+        const body = req.body;
+        const receivedToken = req.headers['x-webhook-signature'];
+
+        // Verifica se o token foi enviado
+        if (!receivedToken) {
+            console.log('Token ausente');
+            return res.status(401).json({ success: false, message: 'Token ausente' });
+        }
+
+        // Valida o token recebido
+        const isValid = verifyToken(body, process.env.WEBHOOK_SECRET, receivedToken);
+
+        if (!isValid) {
+            return res.status(403).json({ success: false, message: 'Token inválido' });
+        }
+
+        console.log('Webhook autenticado com sucesso:', body);
+        res.json({ success: true, message: 'Webhook recebido e autenticado com sucesso' });
+    });
+    ```
+  </Step>
+</Steps>
+
+## Por que essa autenticação é importante?
+
+<Callout type="info">
+🔹 Protege seu sistema contra requisições falsas (spoofing)  
+🔹 Evita ataques do tipo "replay" e alterações maliciosas nos dados  
+🔹 Garante que apenas mensagens legítimas da Ereemby sejam processadas  
+</Callout>
+
+💡 **Dica**: Sempre armazene o `WEBHOOK_SECRET` em variáveis de ambiente e nunca o exponha no código!
+

@@ -1,0 +1,14 @@
+{    
+    "title": "Plataforma",
+    "root": false,
+    "defaultOpen": true,
+    "icon":"BookMarked",
+    "pages": [
+        "starting",
+        "settings",
+       
+        "plugins", 
+        "bots",
+        "beta"
+    ]
+}

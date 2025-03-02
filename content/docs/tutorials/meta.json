@@ -1,0 +1,9 @@
+{    
+    "title": "Tutoriais",
+    "root": false,
+    "icon":"CircleHelp",
+    "defaultOpen": true,
+    "pages": [
+        "mode"
+    ]
+}

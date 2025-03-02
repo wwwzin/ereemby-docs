@@ -1,0 +1,9 @@
+{
+    "title": "Pagamentos",
+    "icon": "CreditCard",
+    "defaultOpen": false,
+    "root": false,
+    "pages": [
+        "asaas"
+    ]
+}
